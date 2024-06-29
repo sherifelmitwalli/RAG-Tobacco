@@ -79,8 +79,9 @@ def main():
                                         cited_file = st.session_state.client.files.retrieve(
                                             file_citation.file_id
                                         )
+                                        quote = getattr(file_citation, "quote", "No quote available")
                                         citations.append(
-                                            f"[{index}] {file_citation.quote} from {cited_file.filename}"
+                                            f"[{index}] {quote} from {cited_file.filename}"
                                         )
                                     except AttributeError as e:
                                         st.error(f"Error retrieving file citation: {e}")
@@ -111,3 +112,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
